@@ -26,20 +26,29 @@ require("lazy").setup({
 			},
 		},
 		-- import any extras modules here
+		{
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+				-- Keymaps for commenting and uncommenting
+				vim.keymap.set("n", "<M-l>", "gcc", { noremap = true, silent = true }) -- Normal mode
+				vim.keymap.set("v", "<M-l>", "gc", { noremap = true, silent = true }) -- Visual mode
+			end,
+		},
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
-		-- { import = "lazyvim.plugins.extras.lang.markdown" },
+		{ import = "lazyvim.plugins.extras.lang.markdown" },
 		{ import = "lazyvim.plugins.extras.lang.rust" },
 		{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.coding.copilot" },
 		-- { import = "lazyvim.plugins.extras.dap.core" },
-		-- { import = "lazyvim.plugins.extras.vscode" },
+		{ import = "lazyvim.plugins.extras.vscode" },
 		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-		-- { import = "lazyvim.plugins.extras.test.core" },
-		-- { import = "lazyvim.plugins.extras.coding.yanky" },
-		-- { import = "lazyvim.plugins.extras.editor.mini-files" },
+		{ import = "lazyvim.plugins.extras.test.core" },
+		{ import = "lazyvim.plugins.extras.coding.yanky" },
+		{ import = "lazyvim.plugins.extras.editor.mini-files" },
 		-- { import = "lazyvim.plugins.extras.util.project" },
 		{ import = "plugins" },
 	},

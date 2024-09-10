@@ -2,6 +2,9 @@
 
 --discipline.cowboy()
 
+require("Comment").setup()
+require("config.open-component")
+
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -38,6 +41,10 @@ keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
+
+-- find and replace word
+keymap.set("n", "<C-f>", ":%s/")
+keymap.set("v", "<C-f>", "y:%s/<C-r>0")
 
 -- New tab
 keymap.set("n", "te", ":tabedit")

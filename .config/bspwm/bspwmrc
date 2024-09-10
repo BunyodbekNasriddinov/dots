@@ -1,24 +1,44 @@
 #! /bin/sh
 
+# kill all processes
 pgrep -x sxhkd >/dev/null || sxhkd &
 killall -q dunst
 killall -q picom
 
+pkill -f ~/.config/dunst/battery-notify.sh &
+pkill -f ~/.config/dunst/volume-notify.sh &
+pkill -f ~/.config/dunst/brightness-notify.sh &
+pkill -f ~/.config/polybar/launch.sh &
+
+# fix cursor
 xsetroot -cursor_name left_ptr
 
 # startup
 picom --config ~/.config/picom/picom.conf &
 dunst -config ~/.config/dunst/dunstrc &
-sh ~/.config/polybar/launch.sh &
 nitrogen --restore &
 nm-applet &
 parcellite &
+ulauncher &
+
+# notifications
+sh ~/.config/dunst/battery-notify.sh &
+sh ~/.config/dunst/volume-notify.sh &
+sh ~/.config/dunst/brightness-notify.sh &
+# polybar
+sh ~/.config/polybar/launch.sh &
+# while true; do
+#   pkill -f ~/.config/polybar/launch.sh &
+#
+#   sh ~/.config/polybar/launch.sh &
+#   slep 5
+# done
 
 telegram-desktop &
 steam &
-Google-chrome &
+google-chrome &
 
-bspc monitor -d 1 2 3 4 5 6
+# bspc monitor -d 1 2 3 4 5 6
 
 bspc config border_width 1
 bspc config window_gap 4
