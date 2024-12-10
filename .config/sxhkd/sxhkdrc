@@ -8,7 +8,8 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu_run
+  gapplication launch io.ulauncher.Ulauncher
+# dmenu_run
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -129,19 +130,11 @@ Print
 
 # volume Control with pulseaudio
 XF86AudioLowerVolume
-	amixer set Master 5%-
+  pamixer --decrease 5
 XF86AudioRaiseVolume
-	amixer set Master 5%+
+  pamixer --increase 5
 XF86AudioMute
-  amixer set Master toggle
-
-#with pipeware
-super + Up
-    pactl set-sink-volume @DEFAULT_SINK@ +5%
-super + Down
-    pactl set-sink-volume @DEFAULT_SINK@ -5%
-super + m
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
+  pamixer --toggle-mute
 
 # brightness control
 XF86MonBrightnessDown
