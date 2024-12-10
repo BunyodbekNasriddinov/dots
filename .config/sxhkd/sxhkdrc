@@ -127,13 +127,21 @@ super + {Left,Down,Up,Right}
 Print
 	flameshot gui
 
-# volume Control
+# volume Control with pulseaudio
 XF86AudioLowerVolume
 	amixer set Master 5%-
 XF86AudioRaiseVolume
 	amixer set Master 5%+
 XF86AudioMute
   amixer set Master toggle
+
+#with pipeware
+super + Up
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+super + Down
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+super + m
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # brightness control
 XF86MonBrightnessDown
