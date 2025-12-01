@@ -3,7 +3,8 @@
 # kill all processes
 pgrep -x sxhkd >/dev/null || sxhkd &
 killall -q dunst
-killall -q picom
+pkill picom
+picom --experimental-backends &
 
 pkill -f ~/.config/dunst/battery-notify.sh &
 pkill -f ~/.config/dunst/volume-notify.sh &
